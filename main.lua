@@ -4,30 +4,57 @@ local dropdown = require('dropdown')
 local screen = require('screen')
 
 local myDropdown
+local myDropdown2
 
 local dropdownOptions = {
   {
-    title     = 'Go to Home',
+    title     = 'Home (The 1st Menu)',
     action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+      native.showAlert('You are Home', 'This is just a placeholder', {'Ok'})
     end 
   },
   {
     rightIcon = display.newImageRect('rightIcon.png', 32, 32),
-    title     = 'Test',
+    title     = 'Testing a menu',
     action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+      --native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+      myDropdown2:toggle()
     end 
   },
   {
     leftIcon  = display.newImageRect('star.png', 32, 32),
     rightIcon = display.newImageRect('rightIcon.png', 32, 32),
-    title     = 'My favorite component',
+    title     = 'We can have icons too',
     action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+      native.showAlert('Star', 'This is just a placeholder', {'Ok'})
     end 
   },
 }
+
+local dropdownOptions2 = {
+  {
+    title     = 'Home',
+    action    = function() 
+            myDropdown:toggle()
+    end 
+  },
+  {
+    rightIcon = display.newImageRect('rightIcon.png', 32, 32),
+    title     = 'Something for Menu2',
+    action    = function() 
+      native.showAlert('Some action', 'This could be another menu or a function', {'Ok'})
+    end 
+  },
+  {
+    leftIcon  = display.newImageRect('star.png', 32, 32),
+    rightIcon = display.newImageRect('star.png', 32, 32),
+    title     = 'We can have icons too',
+    action    = function() 
+      native.showAlert('Star Star', 'This is just a placeholder', {'Ok'})
+    end 
+  },
+}
+
 
 local button = widget.newButton{
   width       = 32,
@@ -59,3 +86,12 @@ myDropdown     = dropdown.new{
   options      = dropdownOptions
 }
 
+myDropdown2     = dropdown.new{
+  x            = screen.rightSide - 20,
+  y            = screen.topSide + 100,
+  toggleButton = button,
+  width        = 280,
+  marginTop    = 12,
+  padding      = 20,
+  options      = dropdownOptions2
+}
